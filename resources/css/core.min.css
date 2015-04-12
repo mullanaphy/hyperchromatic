@@ -122,6 +122,6 @@ html {
     }
 
     .navbar-brand img {
-        height: 90% !important
+        width: 200px !important;
     }
 }
