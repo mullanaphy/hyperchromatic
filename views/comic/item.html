@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{# Boycott Paper, (c) John Mullanaphy (john@jo.mu) 2014, Licensed with OSL 3.0 #}
+{% load site %}
+
+{% block title %}{{ comic.title }} | {{ block.super }}{% endblock %}
+
+{% block head_meta_description %}{{ comic.description }}{% endblock %}
+
+{% block head_meta %}
+  {{ block.super }}
+  <link rel="canonical" href="{% site "url" %}{% url 'comic.views.load_by_slug' comic=comic.slug _format='html' %}">
+{% endblock %}
+{% block head_meta_facebook %}
+  <meta property="og:site_name" content="{% site "title" %}">
+  <meta property="og:title" content="{{ comic.title }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{% site "url" %}{% url 'comic.views.load_by_slug' comic=comic.slug _format='html' %}">
+  <meta property="og:image" content="{% site "url" %}{{ comic.panel_set.all.0.source.url }}">
+  <meta property="og:description" content="{{ comic.description }}">
+  <meta property="article:author" content="https://www.facebook.com/mullanaphy">
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <ul class="list-inline pagination-top">
+        {% if previous_comic %}
+          <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
+          <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+        {% else %}
+          <li class="first-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
+          <li class="previous-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+        {% endif %}
+        <li class="hidden-xs"><strong>|</strong></li>
+        {% if next_comic %}
+          <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+        {% else %}
+          <li class="next-comic disabled"><a href="javascript:void(0);"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+        {% endif %}
+      </ul>
+    </div>
+    {% with comic.panel_set.all as panels %}
+      {% if panels|length > 1 %}
+        {% for panel in comic.panels %}
+          <div class="comic-panel col-lg-3 col-md-6 col-sm-12">
+            <img alt="{{ panel.alt }}" src="{{ panel.source.url }}">
+          </div>
+        {% endfor %}
+      {% elif panels|length == 1 %}
+        {% with panels|first as panel %}
+          <div class="comic-panel col-lg-12 text-center"><img id="comic" alt="{{ comic.title }}" class="img-responsive" src="{{ panel.source.url }}"></div>
+        {% endwith %}
+      {% else %}
+        <div class="comic-panel col-lg-12">Panels missing... Sorry about that...</div>
+      {% endif %}
+    {% endwith %}
+    {% if hidden_panel %}
+      <div class="col-xs-12 text-center"><a href="{{ hidden_panel }}" class="btn btn-warning secret-panel"><span class="fa fa-warning"></span> Super Secret Panel!</a></div>
+    {% endif %}
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h1 class="comic-title"><strong>{{ comic.title }}</strong></h1>
+      <h3 class="comic-date">Date</h3>
+    </div>
+    <div class="text-right col-sm-6 hidden-xs">{% addthis_toolbox %}</div>
+    {% if commentary %}
+      <div class="col-xs-12">
+        {% if commentary.safe %}
+          {{ commentary.content|safe }}
+        {% else %}
+          <p>{{ commentary.content }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <ul class="list-inline pagination-bottom">
+        {% if previous_comic %}
+        <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
+        <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+        {% else %}
+        <li class="first-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
+        <li class="previous-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+        {% endif %}
+        <li class="hidden-xs"><strong>|</strong></li>
+        {% if next_comic %}
+        <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+        {% else %}
+        <li class="next-comic disabled"><a href="javascript:void(0);"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

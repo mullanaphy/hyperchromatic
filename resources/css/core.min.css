@@ -1,0 +1,127 @@
+body {
+    background: #000 !important
+}
+
+html {
+    background: #000 !important
+}
+
+.body {
+    background: #fff !important
+}
+
+.body > .container {
+    padding: 1.5em 3em
+}
+
+.navbar.navbar {
+    margin-bottom: 0
+}
+
+.navbar a {
+    color: #999
+}
+
+.navbar a:active, .navbar a:hover {
+    color: #fff
+}
+
+.footer {
+    padding-top: 2em;
+    padding-bottom: 3em;
+    color: #999
+}
+
+.comic-panel {
+    clear: both
+}
+
+.addthis_sharing_toolbox {
+    margin: 20px 0
+}
+
+.pagination a {
+    font-weight: bold
+}
+
+.pagination .disabled a, .pagination .disabled a:active, .pagination .disabled a:hover {
+    font-weight: normal;
+    font-style: italic;
+    color: #eee
+}
+
+.navbar-support {
+    color: #d9534f !important
+}
+
+.navbar-support:active, .navbar-support:hover {
+    color: #a64f4c !important
+}
+
+.secret-panel {
+    margin-top: 1em
+}
+
+.header-patreon {
+    margin: 0 40px
+}
+
+.header-patreon img {
+    height: 100px
+}
+
+.pagination-top {
+    font-size: 1.25em;
+    margin-bottom: 0
+}
+
+.pagination-top a, .pagination-bottom a {
+    color: #000
+}
+
+.pagination-bottom {
+    font-size: 1.1em;
+    margin-top: 1em;
+}
+
+.first-comic a:active, .first-comic a:hover, .first-comic .fa {
+    color: #45afd6 !important;
+    text-decoration: none;
+}
+
+.previous-comic a:active, .previous-comic a:hover, .previous-comic .fa {
+    color: #87c05e !important;
+    text-decoration: none;
+}
+
+.next-comic a:active, .next-comic a:hover, .next-comic .fa {
+    color: #db5739 !important;
+    text-decoration: none;
+}
+
+.comic-title {
+    margin-top: 0
+}
+
+.comic-date {
+    margin-top: -0.25em;
+    margin-bottom: 1em;
+}
+
+@media (max-width: 767px) {
+    .pagination-top, .pagination-bottom {
+        font-size: 1.5em !important
+    }
+
+    .comic-title {
+        font-size: 2em !important
+    }
+
+    .comic-date {
+        font-size: 1.5em !important
+    }
+
+    .navbar-brand img {
+        height: 90% !important
+    }
+}

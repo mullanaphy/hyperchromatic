@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{# Boycott Paper, (c) John Mullanaphy (john@jo.mu) 2014, Licensed with OSL 3.0 #}
+
+{% block title %}{{ comic.title }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>About</h1>
+  {% autoescape off %}
+    {{ content }}
+  {% endautoescape %}
+{% endblock %}

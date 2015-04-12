@@ -1,0 +1,32 @@
+site:
+  url: http://www.example.com
+  title: My Radical Comic Website
+  description: Hahaha, these jokes are so damn funny!
+  author: Comic Girl
+  copyright: '&copy; Comic Girl 1888, <em>All Rights Reserved</em>.'
+  google_analytics: UA-XXXXXX-1
+  addthis: ra-xxxxxxxxxxx
+  patreon: http://www.patreon.com
+  social:
+    - [facebook, Facebook, 'https://www.facebook.com/facebookname']
+    - [twitter, Twitter, 'https://www.twitter.com/twittername']
+    - [rss, Feed, '/feed']
+    # [Font Awesome Icon, Title, Url]
+  comic_limit: 10
+
+media:
+  url: /media/
+  root: /var/www/site/media/
+
+static:
+  url: /resources/
+  root: /var/www/site/web/
+  directory:
+    - /var/www/site/static/
+
+template:
+  directory:
+    - /var/www/site/views/
+
+admins:
+  - [Comic Girl, comicgirl@example.com]
