@@ -63,7 +63,8 @@
     <footer class="footer">
       <div class="container">
         {% block copyright %}
-          <div class="pull-left">{% site "copyright" %}{% endblock %}</div>
+        <div class="pull-left">{% site "copyright" %}{% endblock %}</div>
+        {% social_media %}
       </div>
     </footer>
     {% block foot_js %}{% endblock %}

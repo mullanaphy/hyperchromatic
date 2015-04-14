@@ -130,3 +130,13 @@ html {
 .pagination-top .disabled span {
     color: #999 !important
 }
+
+.footer a {
+    color: #9d9d9d;
+    text-decoration: none
+}
+
+.footer a:active,
+.footer a:hover {
+    color: #fff
+}
