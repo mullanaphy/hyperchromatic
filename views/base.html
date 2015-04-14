@@ -23,8 +23,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       {% block head_meta %}
         <link rel="author" content="{% block head_meta_google %}https://plus.google.com/+JohnMullanaphy{% endblock %}">
-        <meta name="description" content="{% block head_meta_description %}{% site "description" %}{% endblock %}">
-        <meta name="author" content="{% block head_meta_author %}{% site "author" %}{% endblock %}">
+        <meta name="description" content="{% block head_meta_description %}{% site 'description' %}{% endblock %}">
+        <meta name="author" content="{% block head_meta_author %}{% site 'author' %}{% endblock %}">
         {% block head_meta_facebook %}{% endblock %}
       {% endblock %}
       <link rel="alternate" type="application/rss+xml" title="Boycott Paper &raquo; Latest Comics" href="{% site 'url' %}/feed">
@@ -46,12 +46,11 @@
         </div>
         <div class="collapse navbar-collapse navbar-dropdown pull-right">
           <ul class="nav navbar-nav">
-            {% url 'generic.views.index' as home %}
             {% url 'comic.views.index' as archives %}
             {% url 'generic.views.about' as about %}
-            <li{% if home == path %} class="active"{% endif %}><a href="{{ home }}#comic">Latest</a></li>
             <li{% if archives == path %} class="active"{% endif %}><a href="{{ archives }}">Archives</a></li>
             <li{% if about == path %} class="active"{% endif %}><a href="{{ about }}">About</a></li>
+            <li><a href="mailto: {% site 'email' %}">Contact</a></li>
           </ul>
         </div>
       </div>
