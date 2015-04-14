@@ -22,23 +22,25 @@
 
 {% block content %}
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <ul class="list-inline pagination-top">
-        {% if previous_comic %}
-          <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
-          <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
-        {% else %}
-          <li class="first-comic disabled"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></li>
-          <li class="previous-comic disabled"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></li>
-        {% endif %}
-        <li class="hidden-xs"><strong>|</strong></li>
-        {% if next_comic %}
-          <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
-        {% else %}
-          <li class="next-comic disabled"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></li>
-        {% endif %}
-      </ul>
-    </div>
+    {% if previous_comic or next_comic %}
+      <div class="col-xs-12 col-sm-6">
+        <ul class="list-inline pagination-top">
+          {% if previous_comic %}
+            <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
+            <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+          {% else %}
+            <li class="first-comic disabled"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></li>
+            <li class="previous-comic disabled"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></li>
+          {% endif %}
+          <li class="hidden-xs"><strong>|</strong></li>
+          {% if next_comic %}
+            <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+          {% else %}
+            <li class="next-comic disabled"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></li>
+          {% endif %}
+        </ul>
+      </div>
+    {% endif %}
     {% with comic.panel_set.all as panels %}
       {% if panels|length > 1 %}
         {% for panel in comic.panels %}
@@ -61,7 +63,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <h1 class="comic-title"><strong>{{ comic.title }}</strong></h1>
-      <h3 class="comic-date">Date</h3>
+      <h3 class="comic-date"><time datetime="{{ comic.created|date:'c' }}">{{ comic.created|date:'n/j/y' }}</time></h3>
     </div>
     <div class="text-right col-sm-6 hidden-xs">{% addthis_toolbox %}</div>
     {% if commentary %}
@@ -74,23 +76,25 @@
       </div>
     {% endif %}
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <ul class="list-inline pagination-bottom">
-        {% if previous_comic %}
-        <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
-        <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
-        {% else %}
-        <li class="first-comic disabled"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></li>
-        <li class="previous-comic disabled"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></li>
-        {% endif %}
-        <li class="hidden-xs"><strong>|</strong></li>
-        {% if next_comic %}
-        <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
-        {% else %}
-        <li class="next-comic disabled"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></li>
-        {% endif %}
-      </ul>
+  {% if previous_comic or next_comic %}
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <ul class="list-inline pagination-bottom">
+          {% if previous_comic %}
+            <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
+            <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+          {% else %}
+            <li class="first-comic disabled"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></li>
+            <li class="previous-comic disabled"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></li>
+          {% endif %}
+            <li class="hidden-xs"><strong>|</strong></li>
+          {% if next_comic %}
+            <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+          {% else %}
+            <li class="next-comic disabled"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
-  </div>
+  {% endif %}
 {% endblock %}
