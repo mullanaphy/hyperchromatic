@@ -81,22 +81,22 @@ html {
 
 .pagination-bottom {
     font-size: 1.1em;
-    margin-top: 1em;
+    margin-top: 1em
 }
 
 .first-comic a:active, .first-comic a:hover, .first-comic .fa {
     color: #45afd6 !important;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .previous-comic a:active, .previous-comic a:hover, .previous-comic .fa {
     color: #87c05e !important;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .next-comic a:active, .next-comic a:hover, .next-comic .fa {
     color: #db5739 !important;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .comic-title {
@@ -104,8 +104,8 @@ html {
 }
 
 .comic-date {
-    margin-top: -0.25em;
     margin-bottom: 1em;
+    margin-top: -0.25em
 }
 
 @media (max-width: 767px) {
@@ -122,6 +122,11 @@ html {
     }
 
     .navbar-brand img {
-        width: 200px !important;
+        width: 200px !important
     }
+}
+
+.pagination-bottom .disabled span,
+.pagination-top .disabled span {
+    color: #999 !important
 }

@@ -28,14 +28,14 @@
           <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
           <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
         {% else %}
-          <li class="first-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
-          <li class="previous-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+          <li class="first-comic disabled"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></li>
+          <li class="previous-comic disabled"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></li>
         {% endif %}
         <li class="hidden-xs"><strong>|</strong></li>
         {% if next_comic %}
           <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
         {% else %}
-          <li class="next-comic disabled"><a href="javascript:void(0);"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+          <li class="next-comic disabled"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></li>
         {% endif %}
       </ul>
     </div>
@@ -81,14 +81,14 @@
         <li class="first-comic"><a href="{% url 'comic.views.first' %}#comic"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
         <li class="previous-comic"><a href="{% url 'comic.views.load_by_slug' comic=previous_comic.slug _format='html' %}#comic"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
         {% else %}
-        <li class="first-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></a></li>
-        <li class="previous-comic disabled"><a href="javascript:void(0);"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></a></li>
+        <li class="first-comic disabled"><span class="fa fa-chevron-circle-down"></span><span class="hidden-xs"> First</span></li>
+        <li class="previous-comic disabled"><span class="fa fa-chevron-circle-left"></span><span class="hidden-xs"> Previous</span></li>
         {% endif %}
         <li class="hidden-xs"><strong>|</strong></li>
         {% if next_comic %}
         <li class="next-comic"><a href="{% url 'comic.views.load_by_slug' comic=next_comic.slug _format='html' %}#comic"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
         {% else %}
-        <li class="next-comic disabled"><a href="javascript:void(0);"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></a></li>
+        <li class="next-comic disabled"><span class="hidden-xs">Next </span><span class="fa fa-chevron-circle-right"></span></li>
         {% endif %}
       </ul>
     </div>
